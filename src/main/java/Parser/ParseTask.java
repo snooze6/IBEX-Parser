@@ -2,6 +2,7 @@ package Parser;
 
 import Model.Tabla;
 
+import java.rmi.RemoteException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -24,13 +25,17 @@ public class ParseTask implements Runnable {
                 Executors.newSingleThreadScheduledExecutor();
 
         // Do the thing every 10 seconds
-        executor.scheduleAtFixedRate(new ParseTask(t), 0, FRECUENCY, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(this, 0, FRECUENCY, TimeUnit.SECONDS);
     }
 
     public void run() {
-        this.t = IbexParser.parse();
-        t.print();
-        System.out.println(" ---- "+i);
+        try {
+            this.t = IbexParser.parse();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+//        t.print();
+//        System.out.println(" ---- "+i);
         i++;
     }
 

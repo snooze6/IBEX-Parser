@@ -1,16 +1,25 @@
 package Model;
 
+import com.sun.org.apache.regexp.internal.RE;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Created by snooze on 3/17/16.
  */
-public class Tabla {
+public class Tabla extends UnicastRemoteObject implements RemoteTabla{
     ArrayList<Valor> arr = new ArrayList<Valor>();
 
-    public Tabla(){}
+    public Tabla() throws RemoteException {
+        super();
+    }
 
-    public Tabla(ArrayList<Valor> arr) {
+    public Tabla(ArrayList<Valor> arr) throws RemoteException {
+        super();
         this.arr = arr;
     }
 
@@ -22,6 +31,8 @@ public class Tabla {
         arr.remove(a);
     }
 
+    public Valor get(int a) {return arr.get(a);}
+
     public int size(){
         return arr.size();
     }
@@ -32,4 +43,16 @@ public class Tabla {
         }
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i=0; i<arr.size(); i++){
+            s = i+" - ["+arr.get(i).toString()+"]\n";
+        }
+        return s;
+    }
+
+    public String caca() {
+        return "caca";
+    }
 }

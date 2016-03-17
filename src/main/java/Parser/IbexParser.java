@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.Iterator;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Iterator;
  */
 public class IbexParser {
 
-    public static Tabla parse(){
+    public static Tabla parse() throws RemoteException {
         Tabla t = new Tabla();
 
         {

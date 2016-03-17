@@ -1,9 +1,11 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * Created by snooze on 3/17/16.
  */
-public class Valor {
+public class Valor implements Serializable {
     public String company;
     public float last, dif;
 
