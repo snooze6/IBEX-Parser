@@ -19,14 +19,10 @@ public class Client {
             Remote lookup = Naming.lookup(Configuracion.URL);
             System.out.println("Connected to server");
 
-            Tabla t;
-            if (lookup instanceof Tabla) {
-                 t = (Tabla) lookup;
-            } else {
-                 t = new Tabla();
-            }
+            RemoteTabla t = (RemoteTabla) lookup;
 
-            System.out.println(t.toString());
+
+            System.out.println(t.get(0).toString());
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {

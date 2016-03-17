@@ -2,6 +2,7 @@ package Backend;
 
 import Model.RemoteTabla;
 import Model.Tabla;
+import Parser.IbexParser;
 import Parser.ParseTask;
 
 import java.net.MalformedURLException;
@@ -32,7 +33,7 @@ public class Server {
     public static void main(String... args){
         Tabla t = null;
         try {
-            t = new Tabla();
+            t = IbexParser.parse();
 
             new ParseTask(t).doit();
             System.out.println("-- Lanzado demonio de actualización de la tabla");
