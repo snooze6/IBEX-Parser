@@ -14,13 +14,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.7.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.zenjava</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>8.4.0</version>
-        </dependency>
-
     </dependencies>
 
 </project>
