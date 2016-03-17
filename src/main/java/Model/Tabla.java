@@ -1,7 +1,6 @@
-import Valor.Valor;
+package Model;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * Created by snooze on 3/17/16.

@@ -1,4 +1,4 @@
-package Valor;
+package Model;
 
 /**
  * Created by snooze on 3/17/16.
