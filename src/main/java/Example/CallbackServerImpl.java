@@ -1,3 +1,7 @@
+package Example;
+
+import Example.CallbackServerInterface;
+
 import java.rmi.*;
 import java.rmi.server.*;
 import java.util.Vector;
@@ -8,8 +12,7 @@ import java.util.Vector;
  * @author M. L. Liu
  */
 
-public class CallbackServerImpl extends UnicastRemoteObject
-     implements CallbackServerInterface {
+public class CallbackServerImpl extends UnicastRemoteObject implements CallbackServerInterface {
 
    private Vector clientList;
 

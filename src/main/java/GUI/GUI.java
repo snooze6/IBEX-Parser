@@ -1,4 +1,4 @@
-/**
+package GUI; /**
  * Created by snooze on 3/17/16.
  */
 

@@ -1,3 +1,7 @@
+package Example;
+
+import Example.CallbackServerImpl;
+
 import java.rmi.*;
 import java.rmi.server.*;
 import java.rmi.registry.Registry;
@@ -24,7 +28,7 @@ public class CallbackServer  {
       portNum = (br.readLine()).trim();
       int RMIPortNum = Integer.parseInt(portNum);
       startRegistry(RMIPortNum);
-      CallbackServerImpl exportedObj = 
+      CallbackServerImpl exportedObj =
         new CallbackServerImpl();
       registryURL = 
         "rmi://localhost:" + portNum + "/callback";
