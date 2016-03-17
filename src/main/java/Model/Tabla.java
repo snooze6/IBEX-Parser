@@ -22,6 +22,10 @@ public class Tabla {
         arr.remove(a);
     }
 
+    public int size(){
+        return arr.size();
+    }
+
     public void print(){
         for (int i=0; i<arr.size(); i++){
             System.out.println(i+" - ["+arr.get(i).toString()+"]");
