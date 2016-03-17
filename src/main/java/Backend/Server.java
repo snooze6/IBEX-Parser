@@ -1,6 +1,6 @@
 package Backend;
 
-import Model.RemoteTabla;
+import Backend.Services.ServerServices;
 import Model.Tabla;
 import Parser.IbexParser;
 import Parser.ParseTask;
@@ -31,19 +31,21 @@ public class Server {
     } // end startRegistry
 
     public static void main(String... args){
-        Tabla t = null;
+        ServerServices s;
         try {
-            t = IbexParser.parse();
+            Tabla t = IbexParser.parse();
 
             new ParseTask(t).doit();
+            s = new ServerServices(t);
             System.out.println("-- Lanzado demonio de actualización de la tabla");
 
             startRegistry(Configuracion.PORT);
             System.out.println("-- Registrado RMI en el puerto: "+Configuracion.PORT);
 
-            Naming.rebind(Configuracion.URL,t);
+            Naming.rebind(Configuracion.URL,s);
             System.out.println("-- Exportado objeto");
             System.out.println("-- Servidor listo");
+//            System.out.println("-- Sirviendo <"+s.size()+"> Objetos");
 
         } catch (RemoteException e) {
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package Backend;
 
+import Backend.Services.ServerContract;
 import Model.RemoteTabla;
-import Model.Tabla;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -19,7 +19,7 @@ public class Client {
             Remote lookup = Naming.lookup(Configuracion.URL);
             System.out.println("Connected to server");
 
-            RemoteTabla t = (RemoteTabla) lookup;
+            ServerContract t = (ServerContract) lookup;
 
 
             System.out.println(t.get(0).toString());

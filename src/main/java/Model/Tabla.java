@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Created by snooze on 3/17/16.
  */
-public class Tabla extends UnicastRemoteObject implements RemoteTabla{
-    ArrayList<Valor> arr = new ArrayList<Valor>();
+public class Tabla extends UnicastRemoteObject implements RemoteTabla {
+    public ArrayList<Valor> arr = new ArrayList<Valor>();
 
     public Tabla() throws RemoteException {
         super();

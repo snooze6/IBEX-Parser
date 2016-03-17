@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Valor;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -9,11 +11,8 @@ import java.rmi.RemoteException;
 public interface RemoteTabla extends Remote {
 
     String toString(String message) throws RemoteException;
-
     Valor get(int i) throws RemoteException;
-
     int size() throws RemoteException;
-
     void print() throws RemoteException;
 
 }
