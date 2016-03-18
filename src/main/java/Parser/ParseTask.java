@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ParseTask implements Runnable {
 
-    Tabla t;
+    protected Tabla t;
     public static int FRECUENCY = 10;
     public static int i = 0;
 

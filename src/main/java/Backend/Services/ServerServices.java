@@ -2,6 +2,7 @@ package Backend.Services;
 
 import Model.Tabla;
 import Model.Valor;
+import com.sun.rowset.internal.Row;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -14,11 +15,13 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 
     class NotifyRow {
         public ClientContract client;
-        public int i;
+        public int i, type, cuantity;
 
-        public NotifyRow(ClientContract client, int i) {
+        public NotifyRow(ClientContract client, int i, int type, int cuantity) {
             this.client = client;
             this.i = i;
+            this.type = type;
+            this.cuantity = cuantity;
         }
 
         @Override
@@ -29,7 +32,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 //                System.out.println("---- [" + ((NotifyRow)obj).client + " - " + ((NotifyRow)obj).i + "]");
 //                System.out.println("---- ["+(i==((NotifyRow)obj).i)+" - "+(((NotifyRow)obj).client.toString().equals(client.toString()))+"]");
 //            }
-            return obj instanceof NotifyRow && (i == ((NotifyRow) obj).i && (((NotifyRow)obj).client.toString().equals(client.toString())));
+            return obj instanceof NotifyRow && (i == ((NotifyRow) obj).i && cuantity == ((NotifyRow) obj).cuantity && type == ((NotifyRow) obj).type && (((NotifyRow)obj).client.toString().equals(client.toString())));
         }
     }
 
@@ -66,9 +69,9 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 
     //--------------------------------------------------------------------------------
 
-    public synchronized void register(ClientContract c, int i) throws RemoteException{
+    public synchronized void register(ClientContract c, int i, int type, int cuantity) throws RemoteException{
         // store the callback object into the vector
-        NotifyRow client = new NotifyRow(c,i);
+        NotifyRow client = new NotifyRow(c,i, type, cuantity);
         if (!(observers.contains(client))) {
             observers.addElement(client);
             System.out.println("-- Registered new client ["+c+"-"+i+"]");
@@ -82,8 +85,8 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
     // cancel its registration for callback
     // @param id is an ID for the client; to be used by
     // the server to uniquely identify the registered client.
-    public synchronized void unregister(ClientContract c, int i) throws RemoteException{
-        NotifyRow client = new NotifyRow(c,i);
+    public synchronized void unregister(ClientContract c, int i, int type, int cuantity) throws RemoteException{
+        NotifyRow client = new NotifyRow(c,i, type, cuantity);
         if (observers.removeElement(client)) {
             System.out.println("-- Unregistered client ["+c+"-"+i+"]");
         } else {
@@ -94,7 +97,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
     public synchronized void unregister(ClientContract c) throws RemoteException{
         int j=0;
         for (int i=0; i<observers.size(); i++){
-            if (((NotifyRow) observers.get(i)).client.toString().equals(c.toString())) {
+            if (observers.get(i).client.toString().equals(c.toString())) {
                 System.out.println("-- Unregistered client "+c+"-"+((NotifyRow) observers.get(i)).i+"]");
                 observers.removeElement(i);
                 j++;
@@ -106,6 +109,27 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
     }
 
     public synchronized void sendnotify() throws RemoteException{
+        Vector<NotifyRow> toremove = new Vector<NotifyRow>();
+        for (NotifyRow observer : observers) {
+            NotifyRow row = (NotifyRow) observer;
+            switch (row.type) {
+                case ServerContract.TYPE_LESS_THAN:
+                    if (t.get(row.i).last < row.cuantity) {
+                        row.client.notifyMe("-- Compradas acciones de " + t.get(row.i).company + " por " + t.get(row.i).last);
+                        toremove.add(row);
+                    }
+                    break;
+                case ServerContract.TYPE_MORE_THAN:
+                    if (t.get(row.i).last > row.cuantity) {
+                        row.client.notifyMe("-- Vendidas acciones de " + t.get(row.i).company + " por " + t.get(row.i).last);
+                        toremove.add(row);
+                    }
+                    break;
+                default:
+                    System.out.println("** Tipo de comparación incorrecta");
+            }
+        }
+        observers.removeAll(toremove);
 //        // make callback to each registered client
 //        for (int i = 0; i < observers.size(); i++){
 //            System.out.println("-- Doing "+ i +"-th callback\n");

@@ -19,13 +19,16 @@ public class Client {
             System.out.println("Connected to server");
 
             ClientContract c = new ClientServices();
-            t.register(c, 0);
+            t.register(c, 34, ServerContract.TYPE_MORE_THAN, 8);
             System.out.println("Tried to register");
-
-            t.register(c, 0);
+            t.register(c, 34, ServerContract.TYPE_MORE_THAN, 8);
             System.out.println("Tried to register");
 
             System.out.println(t.get(0).toString());
+
+            Thread.sleep(1000*20);
+
+            System.out.println("Tried to unregister");
 
             t.unregister(c);
         } catch (NotBoundException e) {
@@ -33,6 +36,8 @@ public class Client {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

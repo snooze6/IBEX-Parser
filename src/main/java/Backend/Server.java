@@ -1,6 +1,7 @@
 package Backend;
 
 import Backend.Services.ServerServices;
+import Backend.Services.ServerTask;
 import Model.Tabla;
 import Parser.IbexParser;
 import Parser.ParseTask;
@@ -34,9 +35,8 @@ public class Server {
         ServerServices s;
         try {
             Tabla t = IbexParser.parse();
-
-            new ParseTask(t).doit();
             s = new ServerServices(t);
+            new ServerTask(t, s).doit();
             System.out.println("-- Lanzado demonio de actualización de la tabla");
 
             startRegistry(Configuracion.PORT);

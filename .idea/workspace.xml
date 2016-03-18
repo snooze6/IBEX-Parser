@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d996430e-9646-49db-acf9-82ce6e50297c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Example/CallbackClientImpl.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Example/CallbackClientImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Example/CallbackCallbackClientImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Backend/Services/ServerTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Client.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Services/ClientContract.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Services/ClientContract.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Services/ClientServices.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Services/ClientServices.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Services/ServerContract.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Services/ServerContract.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Services/ServerServices$NotifyRow.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Services/ServerServices$NotifyRow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Backend/Services/ServerServices.class" afterPath="$PROJECT_DIR$/target/classes/Backend/Services/ServerServices.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Example/CallbackClient.class" afterPath="$PROJECT_DIR$/target/classes/Example/CallbackClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Example/CallbackServerImpl.class" afterPath="$PROJECT_DIR$/target/classes/Example/CallbackServerImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Client.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Services/ClientContract.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Services/ClientContract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Services/ClientServices.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Services/ClientServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Server.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Services/ServerContract.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Services/ServerContract.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java" afterPath="$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Example/CallbackClient.java" afterPath="$PROJECT_DIR$/src/main/java/Example/CallbackClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Example/CallbackServerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Example/CallbackServerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Parser/ParseTask.java" afterPath="$PROJECT_DIR$/src/main/java/Parser/ParseTask.java" />
     </list>
     <ignored path="IBEX-SERVER.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,11 +63,38 @@
           <file leaf-file-name="ServerServices.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6571056">
-                  <caret line="96" column="84" selection-start-line="96" selection-start-column="84" selection-end-line="96" selection-end-column="84" />
+                <state vertical-scroll-proportion="0.7692308">
+                  <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1230#1241#0" expanded="true" />
+                    <element signature="e#1450#1461#0" expanded="true" />
+                    <element signature="e#3988#3999#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ServerTask.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#349#350#0" expanded="true" />
+                    <element signature="e#377#378#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ParseTask.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ParseTask.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -93,7 +114,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerContract.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+                  <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -109,7 +130,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Server.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                  <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -120,8 +141,8 @@
           <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Client.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.68057364">
-                  <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+                <state vertical-scroll-proportion="0.5397653">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="52" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -195,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Parser/IbexParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Valor.java" />
         <option value="$PROJECT_DIR$/src/main/java/Example/CallbackClientImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/ParseTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Notifications/RemoteNotifyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Notifications/NotifyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/RemoteNotifyManager.java" />
@@ -204,12 +224,14 @@
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/RegisterNotifications.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ServerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/RemoteTabla.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Backend/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ClientContract.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ClientServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ServerContract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Backend/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/ParseTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/Backend/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ServerTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java" />
       </list>
     </option>
   </component>
@@ -1171,7 +1193,7 @@
       <option name="number" value="Default" />
       <updated>1458230299828</updated>
       <workItem from="1458230305826" duration="7040000" />
-      <workItem from="1458245254802" duration="14526000" />
+      <workItem from="1458245254802" duration="16287000" />
     </task>
     <servers />
   </component>
@@ -1190,7 +1212,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22783000" />
+    <option name="totallyTimeSpent" value="24544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="352" y="1308" width="1920" height="1080" extended-state="6" />
@@ -1448,16 +1470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ParseTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8668555">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="2" selection-end-line="37" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Example/CallbackClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1480,16 +1492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18329939">
           <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1541,7 +1543,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerContract.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1556,23 +1558,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6571056">
-          <caret line="96" column="84" selection-start-line="96" selection-start-column="84" selection-end-line="96" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1230#1241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ParseTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68057364">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5397653">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Backend/Services/ServerServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7692308">
+          <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1450#1461#0" expanded="true" />
+            <element signature="e#3988#3999#0" expanded="true" />
           </folding>
         </state>
       </provider>
