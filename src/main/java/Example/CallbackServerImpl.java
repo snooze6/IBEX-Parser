@@ -1,7 +1,5 @@
 package Example;
 
-import Example.CallbackServerInterface;
-
 import java.rmi.*;
 import java.rmi.server.*;
 import java.util.Vector;
@@ -43,7 +41,7 @@ public class CallbackServerImpl extends UnicastRemoteObject implements CallbackS
 // @param id is an ID for the client; to be used by
 // the server to uniquely identify the registered client.
   public synchronized void unregisterForCallback(
-    CallbackClientInterface callbackClientObject) 
+    CallbackClientInterface callbackClientObject)
     throws java.rmi.RemoteException{
     if (clientList.removeElement(callbackClientObject)) {
       System.out.println("Unregistered client ");
@@ -61,7 +59,7 @@ public class CallbackServerImpl extends UnicastRemoteObject implements CallbackS
     for (int i = 0; i < clientList.size(); i++){
       System.out.println("doing "+ i +"-th callback\n");    
       // convert the vector object to a callback object
-      CallbackClientInterface nextClient = 
+      CallbackClientInterface nextClient =
         (CallbackClientInterface)clientList.elementAt(i);
       // invoke the callback method
         nextClient.notifyMe("Number of registered clients="

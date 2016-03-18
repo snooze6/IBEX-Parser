@@ -1,7 +1,5 @@
 package Example;
 
-import Example.CallbackClientInterface;
-
 import java.rmi.*;
 import java.rmi.server.*;
 
@@ -11,9 +9,9 @@ import java.rmi.server.*;
  * @author M. L. Liu
  */
 
-public class CallbackClientImpl extends UnicastRemoteObject implements CallbackClientInterface {
+public class CallbackCallbackClientImpl extends UnicastRemoteObject implements CallbackClientInterface {
   
-   public CallbackClientImpl() throws RemoteException {
+   public CallbackCallbackClientImpl() throws RemoteException {
       super( );
    }
 
@@ -23,4 +21,4 @@ public class CallbackClientImpl extends UnicastRemoteObject implements CallbackC
       return returnMessage;
    }      
 
-}// end CallbackClientImpl class   
+}// end CallbackCallbackClientImpl class

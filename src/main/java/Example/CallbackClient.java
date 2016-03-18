@@ -1,7 +1,5 @@
 package Example;
 
-import Example.CallbackServerInterface;
-
 import java.io.*;
 import java.rmi.*;
 
@@ -37,7 +35,7 @@ public class CallbackClient {
             System.out.println("-- Lookup completed ");
             System.out.println("-- Server said " + h.sayHello());
             CallbackClientInterface callbackObj =
-                    new CallbackClientImpl();
+                    new CallbackCallbackClientImpl();
 
             // register for callback
             h.registerForCallback(callbackObj);

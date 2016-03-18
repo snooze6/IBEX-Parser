@@ -8,7 +8,13 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class ClientServices extends UnicastRemoteObject implements ClientContract {
 
-    protected ClientServices() throws RemoteException {
+    public ClientServices() throws RemoteException {
         super();
+    }
+
+    public String notifyMe(String message) throws RemoteException {
+        String returnMessage = "-- Notification received: " + message;
+        System.out.println(returnMessage);
+        return returnMessage;
     }
 }

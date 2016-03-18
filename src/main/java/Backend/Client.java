@@ -1,12 +1,12 @@
 package Backend;
 
+import Backend.Services.ClientContract;
+import Backend.Services.ClientServices;
 import Backend.Services.ServerContract;
-import Model.RemoteTabla;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
@@ -15,14 +15,19 @@ import java.rmi.RemoteException;
 public class Client {
     public static void main(String... args) {
         try {
-
-            Remote lookup = Naming.lookup(Configuracion.URL);
+            ServerContract t = (ServerContract) Naming.lookup(Configuracion.URL);
             System.out.println("Connected to server");
 
-            ServerContract t = (ServerContract) lookup;
+            ClientContract c = new ClientServices();
+            t.register(c, 0);
+            System.out.println("Tried to register");
 
+            t.register(c, 0);
+            System.out.println("Tried to register");
 
             System.out.println(t.get(0).toString());
+
+            t.unregister(c);
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
