@@ -1,5 +1,6 @@
 package Parser;
 
+import Backend.Configuracion;
 import Model.Tabla;
 
 import java.net.SocketTimeoutException;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ParseTask implements Runnable {
 
     protected Tabla t;
-    public static int FRECUENCY = 10;
+    int FRECUENCY = Configuracion.CONF_FRECUENCY;
     public static int i = 0;
 
     public ParseTask(Tabla t){
