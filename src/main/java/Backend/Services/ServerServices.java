@@ -15,9 +15,10 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 
     class NotifyRow {
         public ClientContract client;
-        public int i, type, cuantity;
+        public int i, type;
+        float cuantity;
 
-        public NotifyRow(ClientContract client, int i, int type, int cuantity) {
+        public NotifyRow(ClientContract client, int i, int type, float cuantity) {
             this.client = client;
             this.i = i;
             this.type = type;
@@ -69,7 +70,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 
     //--------------------------------------------------------------------------------
 
-    public synchronized void register(ClientContract c, int i, int type, int cuantity) throws RemoteException{
+    public synchronized void register(ClientContract c, int i, int type, float cuantity) throws RemoteException{
         // store the callback object into the vector
         NotifyRow client = new NotifyRow(c,i, type, cuantity);
         if (!(observers.contains(client))) {
@@ -85,7 +86,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
     // cancel its registration for callback
     // @param id is an ID for the client; to be used by
     // the server to uniquely identify the registered client.
-    public synchronized void unregister(ClientContract c, int i, int type, int cuantity) throws RemoteException{
+    public synchronized void unregister(ClientContract c, int i, int type, float cuantity) throws RemoteException{
         NotifyRow client = new NotifyRow(c,i, type, cuantity);
         if (observers.removeElement(client)) {
             System.out.println("-- Unregistered client ["+c+"-"+i+"]");

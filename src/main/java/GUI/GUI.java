@@ -6,33 +6,25 @@ package GUI;
 import Backend.Services.ClientContract;
 import Backend.Services.ConnectServerTask;
 import Backend.Services.ServerContract;
-import com.sun.glass.ui.CommonDialogs;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
+
+import java.rmi.RemoteException;
+import GUI.Dialogs;
 
 public class GUI extends Application {
 
     ServerContract t;
     ClientContract c;
-    Boolean done;
+    Boolean done = false;
 
     Button sendbtn;
     ComboBox<String> comboBox;
@@ -49,37 +41,60 @@ public class GUI extends Application {
 
             comboBox = new ComboBox<String>();
             comboBox.getItems().addAll();
-            comboBox.getSelectionModel().select(1);
 
             morelessBox = new ComboBox<String>();
             morelessBox.getItems().addAll("More", "Less");
+            morelessBox.getSelectionModel().select(0);
 
             price = new TextField();
 
-            sendbtn.setOnAction(new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent event) {
+            sendbtn.setOnAction(event -> {
+                if (done){
                     int i = comboBox.getSelectionModel().getSelectedIndex();
+                    boolean ok;
                     if (i>=0 && i<35){
                         System.out.println("-- Selected: "+i);
-                    }
 
-                    boolean ok; float precio=0;
-                    try {
-                        precio = Float.parseFloat(price.getText()); ok = true;
-                    } catch (NumberFormatException e){
-                        ok = false;
-                    }
-                    if (ok){
-                        System.out.println("-- Registrado: "+precio);
+                        float precio=0;
+                        try {
+                            precio = Float.parseFloat(price.getText()); ok = true;
+                        } catch (NumberFormatException e){
+                            ok = false;
+                        }
+                        if (ok){
+                            String s; int type;
+                            if (morelessBox.getSelectionModel().getSelectedIndex()==0){
+                                s = "vender";
+                                type = ServerContract.TYPE_MORE_THAN;
+                            } else {
+                                s = "comprar";
+                                type = ServerContract.TYPE_LESS_THAN;
+                            }
+
+                            System.out.println("-- Registrado: "+precio);
+                            Dialogs.showInformation(
+                                    "Registrado para recibir notificación",
+                                    "Intentando "+s+" acciones de "+comboBox.getItems().get(i)+" por\n"+precio
+                            );
+                            try {
+                                t.register(c,i,type,precio);
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Dialogs.showError(null, "Precio incorrecto");
+                        }
                     } else {
-                        System.out.println("-- Precio incorrecto");
-                        showDialog("Precio incorrecto");
+                        ok = false;
+                        Dialogs.showError(null, "Seleccione una empresa");
                     }
+                } else {
+                    Dialogs.showError(null, "Aún no está listo");
                 }
             });
         }
 
-        new ConnectServerTask(t,c,done, comboBox).doit();
+        new ConnectServerTask(this).doit();
 
         HBox hBox = new HBox();
         hBox.getChildren().addAll(morelessBox, price);
@@ -96,24 +111,54 @@ public class GUI extends Application {
         primaryStage.show();
     }
 
-    public void showDialog(String text){
-//        Stage dialogStage = new Stage();
-//        dialogStage.initModality(Modality.WINDOW_MODAL);
-//        dialogStage.setScene(new Scene(VBoxBuilder.create().
-//                children(new Text(text), new Button("Ok.")).
-//                alignment(Pos.CENTER).padding(new Insets(5)).build()));
-//        dialogStage.show();
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-        Dialogs.showInformation("Hi", "Good Morning y'all!");
-        if (Dialogs.showConfirm("Choose one baby!", "Can i ask you a question?", Dialogs.YES, Dialogs.NO).equals(Dialogs.YES)) {
-            Dialogs.showWarning(null, "Pay attention to my next question!");
-            String answer = Dialogs.showTextInput("Are you a pink elephant disguised as a flying pig?", "Tell me!", "No");
-            Dialogs.showError(null, "You should not have said " + answer + "!");
-            Dialogs.showException("Now i'm angry", "I'm going home...", new RuntimeException("Exception caused by angry dinossaurs"));
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.out.println("-- Saliendo");
+        if (done) {
+            t.unregister(c);
         }
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public void regenerate(ClientContract c, ServerContract t, Boolean done){
+        this.c = c;
+        this.t = t;
+        this.done = done;
+    }
+
+    public ComboBox<String> getComboBox() {
+        return comboBox;
+    }
+
+    public ServerContract getT() {
+        return t;
+    }
+
+    public ClientContract getC() {
+        return c;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void showMessage(String message){
+//        Dialogs.showInformation(
+//                "Recibida notificación",
+//                message
+//        );
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+                Dialogs.showInformation(
+                        "Recibida notificación",
+                        message
+                );
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@ package Parser;
 
 import Model.Tabla;
 
+import java.net.SocketTimeoutException;
 import java.rmi.RemoteException;
 import java.rmi.UnknownHostException;
 import java.util.concurrent.Executors;
@@ -35,6 +36,8 @@ public class ParseTask implements Runnable {
         } catch (UnknownHostException e){
             e.printStackTrace();
         } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 //        t.print();
