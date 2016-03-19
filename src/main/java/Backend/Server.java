@@ -4,7 +4,6 @@ import Backend.Services.ServerServices;
 import Backend.Services.ServerTask;
 import Model.Tabla;
 import Parser.IbexParser;
-import Parser.ParseTask;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -27,7 +26,7 @@ public class Server {
             // if the registry does not already exist
         } catch (RemoteException e) {
             // No valid registry at that port.
-            Registry registry = LocateRegistry.createRegistry(RMIPortNum);
+            LocateRegistry.createRegistry(RMIPortNum);
         }
     } // end startRegistry
 

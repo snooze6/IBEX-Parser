@@ -2,10 +2,10 @@ package Backend.Services;
 
 import Model.Tabla;
 import Model.Valor;
-import com.sun.rowset.internal.Row;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -98,7 +98,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
         int j=0;
         for (int i=0; i<observers.size(); i++){
             if (observers.get(i).client.toString().equals(c.toString())) {
-                System.out.println("-- Unregistered client "+c+"-"+((NotifyRow) observers.get(i)).i+"]");
+                System.out.println("-- Unregistered client "+c+"-"+ observers.get(i).i+"]");
                 observers.removeElement(i);
                 j++;
             }
@@ -111,18 +111,17 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
     public synchronized void sendnotify() throws RemoteException{
         Vector<NotifyRow> toremove = new Vector<NotifyRow>();
         for (NotifyRow observer : observers) {
-            NotifyRow row = (NotifyRow) observer;
-            switch (row.type) {
+            switch (observer.type) {
                 case ServerContract.TYPE_LESS_THAN:
-                    if (t.get(row.i).last < row.cuantity) {
-                        row.client.notifyMe("-- Compradas acciones de " + t.get(row.i).company + " por " + t.get(row.i).last);
-                        toremove.add(row);
+                    if (t.get(observer.i).last < observer.cuantity) {
+                        observer.client.notifyMe("-- Compradas acciones de " + t.get(observer.i).company + " por " + t.get(observer.i).last);
+                        toremove.add(observer);
                     }
                     break;
                 case ServerContract.TYPE_MORE_THAN:
-                    if (t.get(row.i).last > row.cuantity) {
-                        row.client.notifyMe("-- Vendidas acciones de " + t.get(row.i).company + " por " + t.get(row.i).last);
-                        toremove.add(row);
+                    if (t.get(observer.i).last > observer.cuantity) {
+                        observer.client.notifyMe("-- Vendidas acciones de " + t.get(observer.i).company + " por " + t.get(observer.i).last);
+                        toremove.add(observer);
                     }
                     break;
                 default:
@@ -139,6 +138,14 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
 //            // invoke the callback method
 //            nextClient.notifyMe("-- Number of registered clients="+observers.size());
 //        }
+    }
+
+    public ArrayList<String> getElements() throws RemoteException {
+        ArrayList<String> ret = new ArrayList<String>();
+        for (int i=0; i<t.size(); i++) {
+            ret.add(t.get(i).company);
+        }
+        return ret;
     }
 
 }

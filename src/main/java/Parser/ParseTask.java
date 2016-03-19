@@ -3,6 +3,7 @@ package Parser;
 import Model.Tabla;
 
 import java.rmi.RemoteException;
+import java.rmi.UnknownHostException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +32,8 @@ public class ParseTask implements Runnable {
     public void run() {
         try {
             this.t = IbexParser.parse();
+        } catch (UnknownHostException e){
+            e.printStackTrace();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
