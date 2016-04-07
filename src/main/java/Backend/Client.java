@@ -28,6 +28,8 @@ public class Client {
 
             Thread.sleep(1000*20);
 
+//            t.print();
+
             System.out.println("Tried to unregister");
 
             t.unregister(c);

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$//workspace/java/IBEX-SERVER/IBEX-SERVER.iml" filepath="$USER_HOME$//workspace/java/IBEX-SERVER/IBEX-SERVER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IBEX-SERVER.iml" filepath="$PROJECT_DIR$/IBEX-SERVER.iml" />
     </modules>
   </component>
 </project>

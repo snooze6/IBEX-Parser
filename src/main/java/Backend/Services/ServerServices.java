@@ -76,7 +76,7 @@ public class ServerServices extends UnicastRemoteObject implements ServerContrac
         if (!(observers.contains(client))) {
             observers.addElement(client);
             System.out.println("-- Registered new client ["+c+"-"+i+"]");
-            sendnotify();
+//            sendnotify();
         } else {
             System.out.println("** Client was already registered ["+c+"-"+i+"]");
         }
